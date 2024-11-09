@@ -1,7 +1,6 @@
 import re
 import requests
 
-
 def validate_snils(snils):
     pattern = r'^\d{3}-\d{3}-\d{3}\ \d{2}$'
     return bool(re.match(pattern, snils))
@@ -18,7 +17,6 @@ def find_snils_from_url(url):
     except requests.RequestException as e:
         print(f"Ошибка при запросе к {url}: {e}")
         return []
-
 
 def find_snils_in_file(file_path):
     try:
