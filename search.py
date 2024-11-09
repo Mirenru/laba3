@@ -11,7 +11,13 @@ def find_snils_in_text(text):
     return re.findall(pattern, text)
 
 def find_snils_from_url(url):
-
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return find_snils_in_text(response.text)
+    except requests.RequestException as e:
+        print(f"Ошибка при запросе к {url}: {e}")
+        return []
 
 
 def find_snils_in_file(file_path):
